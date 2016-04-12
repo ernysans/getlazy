@@ -1,0 +1,45 @@
+{
+  "name": "getlazy",
+  "version": "0.0.1",
+  "description": "Lightweight lazy loading content script.",
+  "main": "getLazy.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ernysans/getlazy.git"
+  },
+  "keywords": [
+    "getLazy",
+    "erny",
+    "sans",
+    "js",
+    "javascript",
+    "window",
+    "responsive",
+    "images",
+    "lazy",
+    "load",
+    "bootstrap",
+    "retina",
+    "hd"
+  ],
+  "author": "Erny Sans (http://erny.co)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ernysans/getlazy/issues"
+  },
+  "homepage": "https://github.com/ernysans/getlazy#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-beautify": "^2.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify": "0.0.7",
+    "gulp-umd": "^0.2.0"
+  },
+  "dependencies": {
+    "lend": "0.0.7",
+    "occurrence": "0.0.5"
+  }
+}
