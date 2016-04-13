@@ -1,6 +1,6 @@
 {
   "name": "getlazy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Lightweight lazy loading content script.",
   "main": "getLazy.js",
   "scripts": {
@@ -39,7 +39,7 @@
     "gulp-umd": "^0.2.0"
   },
   "dependencies": {
-    "lend": "0.0.7",
-    "occurrence": "0.0.5"
+    "lend": "*",
+    "occurrence": "*"
   }
 }

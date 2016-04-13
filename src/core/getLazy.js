@@ -9,6 +9,15 @@
 
 'use strict';
 
+var supports = !!document.querySelector && !!window.addEventListener; // Feature test
+var settings; // Placeholder variables
+
+// Default settings
+var defaults = {
+    successClass: null,
+    errorClass: null
+};
+
 // Reference attributes
 var ref = {};
 ref.selector = ".getLazy";
@@ -41,23 +50,9 @@ var reactFast = occurrence.debounce(function (e) {
     getLazyContent()
 }, 20);
 
-// Call lazy content ======================================== //
-function getLazy() {
-    window.addEventListener('DOMContentLoaded', function (e) {
-        e.preventDefault();
-        getLazyContent();
-
-        window.addEventListener('load', getLazyContent(), false);
-        window.addEventListener('DOMSubtreeModified', reactFast, false);
-        window.addEventListener('scroll', reactFast, false);
-        window.addEventListener('resize', onResize, false);
-
-    }, false);
-}
-
 // Reset loaded
 function reset() {
-    var x = document.querySelectorAll(".getLazy__loaded");
+    var x = document.querySelectorAll('.'+ref.successClass);
     var i;
     for (i = 0; i < x.length; i++)
         clearLoaded(x[i]);
@@ -142,19 +137,39 @@ function setImage(route, type, item) {
     if (type == 'background' && route)
         try {
             item.style.backgroundImage = 'url("' + route + '")';
-            item.classList.add(ref.successClass, 'animated', 'fadeIn');
-            item.classList.remove(ref.errorClass);
+            item.classList.add(ref.successClass, settings.successClass);
+            item.classList.remove(ref.errorClass, settings.errorClass);
         }
         catch (err) {
-            item.classList.add(ref.errorClass);
+            item.classList.add(ref.errorClass, settings.errorClass);
         }
     else if (!type && route)
         try {
             item.setAttribute('src', route);
-            item.classList.add(ref.successClass, 'animated', 'fadeIn');
-            item.classList.remove(ref.errorClass);
+            item.classList.add(ref.successClass, settings.successClass);
+            item.classList.remove(ref.errorClass, settings.errorClass);
         }
         catch (err) {
-            item.classList.add(ref.errorClass);
+            item.classList.add(ref.errorClass, settings.errorClass);
         }
+}
+
+// Call lazy content ======================================== //
+function getLazy(options) {
+    // feature test
+    if ( !supports ) return;
+
+    // Merge user options with defaults
+    settings = occurrence.mergeArray( defaults, options || {} );
+
+    window.addEventListener('DOMContentLoaded', function (e) {
+        e.preventDefault();
+        getLazyContent();
+
+        window.addEventListener('load', getLazyContent(), false);
+        window.addEventListener('DOMSubtreeModified', reactFast, false);
+        window.addEventListener('scroll', reactFast, false);
+        window.addEventListener('resize', onResize, false);
+
+    }, false);
 }

@@ -2,12 +2,37 @@
 <html>
 <head>
 	<title>Test getLazy</title>
+	<script type="text/javascript" src="../../../occurrence/occurrence.js"></script>
+	<script type="text/javascript" src="../../../lend/lend.js"></script>
 	<script type="text/javascript" src="../../getLazy.js"></script>
-	<script type="text/javascript">
-		getLazy();
+<script type="text/javascript">
+		getLazy({
+			successClass: 'fadeIn',
+			errorClass: 'meeeh',
+		});
 	</script>
+	<style type="text/css">
+		#bg {
+			background-color: black;
+			background-position: center;
+			background-size: cover;
+			display: block;
+			height: 40vh;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
 </head>
 <body>
+<figure id="bg" class="getLazy" data-src-type="background" 
+data-src="http://ogle.app/img/u/featured/1_md.jpg" 
+data-src-hd="http://ogle.app/img/u/featured/1_hd.jpg" 
+data-src-xl="http://ogle.app/img/u/featured/1_hd.jpg" 
+data-src-lg="http://ogle.app/img/u/featured/1_hd.jpg" 
+data-src-md="http://ogle.app/img/u/featured/1_md.jpg" 
+data-src-sm="http://ogle.app/img/u/featured/1_sm.jpg" 
+data-src-xs="http://ogle.app/img/u/featured/1_sm.jpg" 
+alt="Image"> <figcaption>Hi</figcaption> </figure>
 
 </body>
 </html>

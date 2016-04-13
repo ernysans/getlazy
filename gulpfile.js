@@ -13,16 +13,16 @@ gulp.task('umd', function() {
             name: 'lend'
           },
           {
-            name: 'occurrence',
+            name: 'occurrence'
           }
         ];
       },
       exports: function(file) {
-          return 'getLazy';
-        },
-        namespace: function(file) {
-          return 'getLazy';
-        }
+        return 'getLazy';
+      },
+      namespace: function(file) {
+        return 'getLazy';
+      }
     }))
     .pipe(beautify({indentSize: 4}))
     .pipe(gulp.dest('build'));
@@ -43,4 +43,4 @@ gulp.task('minify', ['umd'], function() {
     .pipe(gulp.dest('./'))
 });
 
-gulp.task('default', ['umd', 'minify']);
+gulp.task('default', ['minify', 'umd']);
